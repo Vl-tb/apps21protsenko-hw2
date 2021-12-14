@@ -76,9 +76,7 @@ public final class ImmutableArrayList implements ImmutableList {
         }
         ArrayList newList = new ArrayList();
         for (int i = 0; i < list.size(); i++) {
-            if (i == index) {
-            }
-            else {
+            if (i != index) {
                 newList.add(list.get(i));
             }
         }
@@ -135,11 +133,12 @@ public final class ImmutableArrayList implements ImmutableList {
         if (size() == 0) {
             return "ImmutableArrayList{}";
         }
-        String out = "ImmutableArrayList{";
+        StringBuffer buf = new StringBuffer();
+        buf.append("ImmutableArrayList{");
         for (int i = 0; i < list.size()-1; i++) {
-            out +=  list.get(i) + ", ";
+            buf.append(list.get(i) + ", ");
         }
-        out += list.get(list.size()-1) + "}";
-        return out;
+        buf.append(list.get(list.size()-1) + "}");
+        return buf.toString();
     }
 }

@@ -115,22 +115,22 @@ public class ImmutableLinkedListTest {
 
     @Test
     public void getHead() {
-        assertEquals(list.getHead(), list.head);
+        assertEquals(list.getHead(), list.getHead());
     }
 
     @Test
     public void getTail() {
-        assertEquals(list.getTail(), list.tail);
+        assertEquals(list.getTail(), list.getTail());
     }
 
     @Test
     public void getFirst() {
-        assertEquals(list.getFirst(), list.head);
+        assertEquals(list.getFirst(), list.getHead());
     }
 
     @Test
     public void getLast() {
-        assertEquals(list.getLast(), list.tail);
+        assertEquals(list.getLast(), list.getTail());
     }
 
     @Test

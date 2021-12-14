@@ -3,8 +3,8 @@ package ua.edu.ucu.collections.immutable;
 import java.util.ArrayList;
 
 public final class ImmutableLinkedList implements ImmutableList {
-    Node head;
-    Node tail;
+    private Node head;
+    private Node tail;
 
     public ImmutableLinkedList(Object[] elements) {
         ArrayList<Node> nodes = new ArrayList<>();
@@ -37,7 +37,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         }
         int i = 0;
         Node curr = head;
-        while(curr.getNext() != null) {
+        while (curr.getNext() != null) {
             i++;
             curr = curr.getNext();
         }
@@ -52,13 +52,11 @@ public final class ImmutableLinkedList implements ImmutableList {
             }
             return null;
         }
-        Node node = new Node();
-        node.setValue(e);
         Node curr = head;
         ArrayList<Object> nodes = new ArrayList<>();
         int i = 0;
         boolean param = false;
-        while(curr.getNext() != null) {
+        while (curr.getNext() != null) {
             if (i == index && !param) {
                 nodes.add(e);
                 param = true;
@@ -124,9 +122,7 @@ public final class ImmutableLinkedList implements ImmutableList {
             return null;
         }
         while (curr.getNext() != null) {
-            if (index == i) {
-            }
-            else {
+            if (index != i) {
                 nodes.add(curr.getValue());
             }
 
@@ -136,7 +132,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         if (index < i && index > -1) {
             nodes.add(tail.getValue());
         }
-        if (0> index || index > i){
+        if (0 > index || index > i) {
             return null;
         }
         return new ImmutableLinkedList(nodes.toArray());
@@ -165,7 +161,7 @@ public final class ImmutableLinkedList implements ImmutableList {
         if (index == i) {
             nodes.add(e);
         }
-        if (0> index || index > i){
+        if (0 > index || index > i) {
             return null;
         }
         return new ImmutableLinkedList(nodes.toArray());
@@ -264,18 +260,19 @@ public final class ImmutableLinkedList implements ImmutableList {
         if (head == null) {
             return "ImmutableLinkedList{}";
         }
-        String out = "ImmutableLinkedList{";
+        StringBuffer buf = new StringBuffer();
+        buf.append("ImmutableLinkedList{");
         Node curr = head;
         while (curr.getNext() != null) {
             if (curr == head) {
-                out += "head=" + head;
+                buf.append("head=" + head);
             }
             else {
-                out += ", " + curr.getValue();
+                buf.append(", " + curr.getValue());
             }
             curr = curr.getNext();
         }
-        out += ", tail=" + tail + '}';
-        return out;
+        buf.append(", tail=" + tail + '}');
+        return buf.toString();
     }
 }
